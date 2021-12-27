@@ -1,0 +1,34 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/arduino-1.8.19/libraries/**",
+                "/opt/arduino-1.8.19/lib/**",
+                "/opt/arduino-1.8.19/hardware/tools/avr/**",
+                "/opt/arduino-1.8.19/hardware/tools/avr/avr/**",
+                "/opt/arduino-1.8.19/hardware/tools/avr/avr/include**",
+                "/opt/arduino-1.8.19/hardware/tools/avr/avr/lib**",
+                "/opt/arduino-1.8.19/hardware/tools/avr/avr/bin**",
+                "/opt/arduino-1.8.19/hardware/tools/avr/lib/**",
+                "/opt/arduino-1.8.19/hardware/tools/avr/include/**",
+                "/opt/arduino-1.8.19/hardware/tools/avr/libexec/**",
+                "/opt/arduino-1.8.19/hardware/tools/avr/bin/**",
+                "/opt/arduino-1.8.19/hardware/arduino/avr/**",
+                "/opt/arduino-1.8.19/hardware/arduino/avr/libraries/**",
+                "/opt/arduino-1.8.19/hardware/arduino/avr/variants/**",
+                "/opt/arduino-1.8.19/hardware/arduino/avr/firmwares/**",
+                "/opt/arduino-1.8.19/hardware/arduino/avr/cores/**",
+                "/opt/arduino-1.8.19/hardware/arduino/avr/extras/**",
+                "/opt/arduino-1.8.19/hardware/arduino/avr/bootloaders/**"
+            ],
+            "defines": ["USBCON"],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

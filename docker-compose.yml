@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  rabbitmq:
+    build: .
+    restart: always
+    hostname: rabbitmq
+    networks:
+      - frontend
+    env_file:
+      - .env
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+      - "1883:1883"
+
+networks:
+  frontend:
+    external:
+      name: infrastructure
