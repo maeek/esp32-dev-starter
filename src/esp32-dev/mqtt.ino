@@ -1,5 +1,6 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include <ArduinoJson.h>
 
 WiFiClient wifiClient;
 PubSubClient client(wifiClient);
@@ -45,6 +46,16 @@ void mqtt_callback(char *topic, byte *message, unsigned int length)
     messageTemp += (char)message[i];
   }
   Serial.println();
+
+  StaticJsonDocument<200> doc;
+  DeserializationError error = deserializeJson(doc, messageTemp);
+
+  if (error)
+  {
+    Serial.print(F("deserializeJson() failed: "));
+    Serial.println(error.f_str());
+    return;
+  }
 
   mqtt_command_callback(topic, messageTemp);
 }
