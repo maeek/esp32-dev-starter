@@ -1,7 +1,3 @@
-#include <WiFi.h>
-#include <PubSubClient.h>
-#include <ArduinoJson.h>
-
 WiFiClient wifiClient;
 PubSubClient client(wifiClient);
 
@@ -23,21 +19,13 @@ void loop_mqtt()
     reconnect();
   }
   client.loop();
-
-  // long now = millis();
-  // if (now - lastMsg > 5000)
-  // {
-  //   lastMsg = now;
-
-  //   client.publish("esp32/test", "connected");
-  // }
 }
 
 void mqtt_callback(char *topic, byte *message, unsigned int length)
 {
   Serial.print("Message arrived on topic: ");
-  Serial.print(topic);
-  Serial.print(". Message: ");
+  Serial.println(topic);
+  Serial.print("Message: ");
   String messageTemp;
 
   for (int i = 0; i < length; i++)
@@ -46,16 +34,6 @@ void mqtt_callback(char *topic, byte *message, unsigned int length)
     messageTemp += (char)message[i];
   }
   Serial.println();
-
-  StaticJsonDocument<200> doc;
-  DeserializationError error = deserializeJson(doc, messageTemp);
-
-  if (error)
-  {
-    Serial.print(F("deserializeJson() failed: "));
-    Serial.println(error.f_str());
-    return;
-  }
 
   mqtt_command_callback(topic, messageTemp);
 }

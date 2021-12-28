@@ -1,14 +1,23 @@
-#include <ArduinoJson.h>
-
-void mqtt_command_callback(char *topic, StaticJsonDocument<200> json)
+void mqtt_command_callback(char *topic, String json)
 {
+  DynamicJsonDocument doc(1024);
+  DeserializationError error = deserializeJson(doc, json);
+
+  if (error) {
+    Serial.print("Error: message deserialization failed");
+    Serial.println(error.f_str());
+    return;
+  }
+  
   if (String(topic) == MQTT_COMMAND_TOPIC)
   {
-    if (json["action"] == "on")
+    const char *action = doc["action"];
+
+    if ((String)action == "on")
     {
       led_on();
     }
-    else if (json["action"] == "off")
+    else if ((String)action == "off")
     {
       led_off();
     }

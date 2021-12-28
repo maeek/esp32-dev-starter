@@ -1,5 +1,3 @@
-#include <WiFi.h>
-
 void setup_wifi()
 {
   delay(10);
